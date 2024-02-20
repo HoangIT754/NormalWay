@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+
+import SecondComponent from './SecondCoponent'
 
 function App() {
+  // useState
+  const [background, setBackgorund] = useState("Light");
+
+  const backgroundHandle = () => {
+    setBackgorund(background === "Light" ? "Dark" : "Light");
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Normal Way */}
+      <div className="NormalWay">
+        <h2>This is normal way using useState</h2>
+        <button onClick={backgroundHandle}>Change background</button>
+        <SecondComponent background={background} />
+      </div>
     </div>
   );
 }
